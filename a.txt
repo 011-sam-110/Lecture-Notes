@@ -1,0 +1,733 @@
+[Auto-generated transcript. Edits may have been applied for clarity.]
+See what you got. I can see. So what we just seen was recursion done badly.
+
+And the reason it was kind of done badly is because we were making two recursive calls.
+
+But you, a classical, was doing roughly the same amount of work as we have before.
+
+So every time I made a call, I was essentially doubling the amount of work I had in total because it was the same amount of work, same amount of work.
+
+So about double the amount of work. And that's really painful because every time I make a call and doubling the amount of effort I'm doing right,
+
+and this is this is what I want to avoid. So now we're going to see how to do it better.
+
+Okay. So this is the problem. So the solution is always to try and make sure that when I make if I'm making two recursive calls right.
+
+Each one does at least half or does at most half the amount of work.
+
+And then the amount of work will stay the same will go down, which is what I want. Okay.
+
+So good algorithm is going to reduce the amount of work by at least the number of new calls.
+
+Okay. So if I doubled the number of calls then I need to halve the amount of work.
+
+Otherwise I'm going to blow up. So this is the intuition I should have.
+
+And so if I make two new calls and each one does a third of the work, and the total work I'm left with is two thirds, and that's good.
+
+If I make four new calls and each one does one third of the work,
+
+then adding that I've got 4/3 of the work I had before, so I've increased my amount of work and that's bad.
+
+This is the idea that you should have. So. Here is a little story.
+
+Um, we'll see about how to. Right now, I'm going to solve it.
+
+Right. So, um, I go on holiday and I cycle to campus quite frequently, so I leave my bike on campus.
+
+Okay. Uh, and then one of them away, my bike gets stolen. It is, uh, what happened yet?
+
+But it could, um, fortunately, the spot was covered by CCTV.
+
+So what I'm interested in is trying to find.
+
+The video of the guy stealing my bike or the woman stealing my bike.
+
+Um, and unfortunately, there's.
+
+I counted the number of days. So two weeks, yet 14 days times 24 hours is 236 hours of footage to look through.
+
+Um, and that's quite a lot.
+
+So if I did linear search, right, even if I broke in, say, half hour chunks, I'd have 700 half hour chunks to take, and that would be awful.
+
+Okay. But this is not like a sensible way to do this, right?
+
+I'm more self-aware to do this. We would do something different, which is what?
+
+Um, who had the hand up first? I think the person at the back at the end at first, yeah.
+
+Do a binary search instead. How to do a binary search. Yes it is.
+
+Yeah. Is that there yet?
+
+I'm not going to try and lob anything up down there, but when you leave, you are welcome to stay or not.
+
+Still take. Um, yeah. And this pass. This is what we call binary search.
+
+Yeah. So the point is, if I look at the midpoint and it's still there,
+
+I know it isn't stolen between time zero and the midpoint, so I don't need to check any of that time anymore.
+
+I can just check the second half. Okay. So what I can do is every time I check, I throw away half the amount of things to check.
+
+Okay, so linear search takes 200 hours, but a solution is check halfway.
+
+If it's still there, then I know I need to check the later hours. If it's not still there, I need to check the earlier hours.
+
+Okay, so I keep repeating and then every time I throw away half the videos, okay.
+
+So in the worst case, if I'm going down to hour long groups, I need it most nine checks, okay.
+
+Which is not better than doing 336 checks because 2 to 9 I'm splitting every time in two takes.
+
+The nine is 512. So the number of, uh, like the space of things I've checked is bigger than all of the times.
+
+So there's an algorithmic problem. This is something about will be about, um, sorting like, uh, searching arrays that are sorted.
+
+Okay. And remember, we saw this thing earlier about how you could stop searching an array.
+
+Uh, you could change, uh, we could write an algorithm for this, which doesn't use a for loop, but uses a while loop.
+
+And you stop as soon as you're bigger than the thing you're looking for. Okay.
+
+But that's still going to be linear time, because in the worst case, you still might go to the end of the array.
+
+Okay. So now we're gonna do something. It's going to be sublinear time.
+
+Okay. And we're gonna try and solve it recursively. So the subproblem is going to be how do I reduce the problem of solving a long array into solvers,
+
+into finding something in the long array to find it in a short array. Okay.
+
+And the idea is going to be split it into left and right.
+
+Okay. And then um, one idea you could take is well, if I know if it's in left, but if I solve the problem for both left and right.
+
+Okay. So I now I check whether it's in the left half of my array, I check in the right half of array and then I know.
+
+Then afterwards I'll know which bit it's in. Okay, so no is not coordinate right.
+
+So I, I'm looking for whether this K is in A, it's either in the left half or the right half.
+
+I split I recursively solve each those halves and then I come back.
+
+It's. That will be a linear time algorithm because we're splitting it into two.
+
+But each of those two is half the size of my original one. Okay.
+
+But as you said, this does more work than I need because it can only be in one side or the other.
+
+Okay. Okay. It's either in the left hand side or the right hand side.
+
+If I've split it down, the middle is cut me in both sides. If it is in both sides, I don't care.
+
+I don't need to find it once. And it's actually a sorted array so it can only be one side.
+
+No, it can be both if it's all just the same number. For example. Okay.
+
+So what we're going to do instead is we split into left and right.
+
+But check is going to be in check whether it's in, um, left or right by saying is it bigger or smaller.
+
+Okay. And then we're going to forget the half is not in. This is like what we're doing with the bike where we're saying.
+
+If it's still there, we only need to check later time.
+
+And if it's not there, we need to check earlier time. So I'm just going to compare the value of k to the midpoint.
+
+Okay. And if k is bigger than the value of the midpoint then we know it must be after the k is smaller than the value of the midpoint.
+
+That must be before. And here we're relying on the fact that our array sorted x.
+
+So this is really good because it does one recursive call. Okay. But each time with throwing away half the work.
+
+Okay. So we're looking at um you'll need to check one half of the array afterwards.
+
+Okay. And this is why this is a very fast sorting algorithm or searching algorithm.
+
+The base case is I'm looking for an element. I just need to find it in something of length one.
+
+And it's either there or no. And I can do that trivially. That's a very easy thing to do.
+
+Okay, so now we can translate this observation into a recursive algorithm.
+
+Okay. And we just do exactly what we wrote. Okay. So if it's of length one okay.
+
+Here I could have taken the length as an input. But I've instead allowed myself an extra method or procedure to find the length of the right.
+
+I could if not, I could just put n as an input and be fine. Okay.
+
+Um, so I can do is I can say if n is length one, then return true.
+
+If the thing I'm looking for is the only element in the array, otherwise return false.
+
+That's another thing I do. If it's not of length one.
+
+What do I do? I split the array down the middle. Okay. And I say these k smaller than the thing in uh then then my midpoint.
+
+And if it's smaller than my midpoint, I know it's left. So the left half of the array okay.
+
+Because my right is sorted.
+
+So then what I do is I just do binary search on the left side of my array, which is everything up to the midpoint minus one.
+
+Okay. And then um, if it's bigger than the midpoint, then I need to search the right hand side of my array.
+
+And I just do that again recursively. Okay. So um, here is an example.
+
+This is Alessio made this beautiful demonstration for me. Uh, because you'll see it again in, uh, Dave Stockton algorithms.
+
+So, um, here we're searching for 43. Okay, so the first thing we do is the whole array.
+
+We check the middle value and we say, is 43 bigger than 22?
+
+Yes. So I can just spin everything over here. Okay. So I now I need to check these numbers.
+
+Next thing. Now let's find the middle value again. Okay.
+
+And 43 is smaller than 48. So I can just check these left hand values.
+
+Okay. Now the middle value is this 30 and 43 is bigger than 30.
+
+So I just need to check this one value. And now 43 is equal to 43. So I have found okay.
+
+So yeah. Uh uh, yeah.
+
+So this only works in the array is sorted in order. Yeah. What can I offer you as a dairy milk?
+
+Caramel whisper 12. Crunchy. Hello.
+
+Hey, go! Oh, I think these ones fly quite nicely. Mind your heads. Oh, plus.
+
+All right. Um, yeah. So you can write in Python, which is essentially exactly the same as the pseudocode.
+
+Um, and I ran this on my own laptop.
+
+And, um, if you're looking for 10,000 numbers, linear search takes about a second and binary search takes point two seconds.
+
+Okay. So it's a real significant increase. Okay.
+
+You can see the way it runs as well. What happens is we're constantly splitting the graph in hot like the array in half.
+
+Okay. Until we get down to this small thing and then we come back up. Okay.
+
+So we split in half. Spin spin half, and you'll get bigger.
+
+So the number of calls we're doing here is the number of times we can have our array until we get to something of length one.
+
+Okay. Um, I mean, you can also see the python tutor if you want.
+
+This is a very useful exercise. So what is the complexity of this algorithm?
+
+Well, what's happening is each recursive call, we're halving the size of the array.
+
+And we keep doing this until we reach something of length one. Okay.
+
+So the length we've got go and have a two and have a four at the end of two K.
+
+Okay. And we stop when we reach. And of A2K is one.
+
+Okay. So that's equivalently when two to the k is bigger than n. And this is by definition log n.
+
+So the two different ways you can think about log n. Okay. So in computer science we usually when we write log we mean to the base two okay.
+
+And what we mean by this is there's two ways to say it. It's the number of times.
+
+You can divide n by two. To get to one.
+
+Okay, so how many times I have to split this in two to get to one? Okay.
+
+And the other one is it's two to the log n is equal to n.
+
+So it's the number of times I multiply two by itself to get to n is the same.
+
+So what's happening here is I'm doing log n many recursive calls okay.
+
+And each recursive call the amount of work that it does, like the new work that I have when I do each recursive call is constant.
+
+Okay. Because all I do is just do this one check every time.
+
+That's not very much effort. So in total we have theta log n of recursive calls.
+
+We do one comparison. So in total the algorithm is um h of log n.
+
+And so this is our first example of a logarithmic algorithm. And.
+
+Uh, logarithmic albums, like a significant improvement over a bubble sort, insertion sort and selection sort.
+
+All of which, as we saw in the seminars, are quadratic. Okay so here is log.
+
+So this is n and this is log n. And it's so small that you can barely see it.
+
+Um coming off the x axis here. Okay, here it is below.
+
+And look how flat that guy is, right? So this is what you're seeing.
+
+So binary search very important right. Uh, searching uh algorithm.
+
+Um that works in log n and the ways using it works because you're splitting a sorted array and only sort searching one half.
+
+Okay. So I split into two and search one half. Okay. And that's why it works so fast.
+
+Okay now. Oh, yeah. Um, I shouldn't have compared binary search to sorting algorithms.
+
+Actually compared it to linear search, which is linear. Okay, so we've gone into, uh.
+
+Log in. Sorry. Well, I had in my head was this next bit where we're gonna talk about sorting algorithm, recursive sorting algorithm called merge sort.
+
+Okay. And motion is also is going to be n log n.
+
+And so it's going to be insertion sort and selection sort and bubble sort. Okay.
+
+Um in general, the reason I didn't put uh,
+
+bubble sort here is because bubble sort is such a slow algorithm in practice that you don't really ever want to use it.
+
+Okay. So there are practical reasons for using session sort and selection.
+
+Sort on small inputs okay.
+
+And I think, um, for example, Python's default sorting algorithm uses, I think, insertion sort for small inputs because that's reasonably efficient.
+
+Um, but, uh, almost nobody uses bubble sort ever.
+
+Okay. So there's no argument. You shouldn't even teach it.
+
+Okay, so, um, this is the first case where, like, we have to combine our subproblems in an interesting way.
+
+Okay. Because remember the max one, we just took a max, right?
+
+With our, um, uh, fib one. We just added two things up.
+
+Okay. So this step, we have to combine the subproblems. There's always kind of easy.
+
+Okay. And now we're gonna have to do something where we combine our subproblems in a slightly more interesting way.
+
+And this is partly setting you up for program analysis and then such an algorithm.
+
+But we're going to see lots of algorithms. Much recursive.
+
+But the way of combining the solutions to subproblems takes a little bit more work than, um, just say adding two things.
+
+Okay. So this is what I want to do. We've got an array of n numbers and we want to sort it.
+
+Okay. So how can we break this into subproblems. And what are the base cases.
+
+So. What are the sub problems in this case?
+
+Suppose it's just the bit that we have to think about. Suppose I could sort a left half of my array and I could sort the right half of my array.
+
+Okay. So my array looks like. This by traffic because it's very bad.
+
+And we'll put something much better on the boat. I suppose my array looks like 329 1112, eight, six.
+
+Something like this. Okay, so the thing is, if I can sort this part of the array and this part of the array.
+
+So this pawn would then be six 812 okay.
+
+And this one would be 239 11 okay.
+
+So if I solve the problem of sorting each side of my array recursively, what I'm getting back is these two guys.
+
+Okay. So I just have a little bit more work in now to build from this my whole sorted array.
+
+Okay. And this is a combination step. And it's what we're going to call merging.
+
+And it was in at least one of the problem sheets. Um and this is why it's in the problem sheet, so that you see it as a kind of clue of the for now.
+
+And the way merging is going to work is I'm going to use these two arrays and build one sorted array out of them.
+
+And what I do is you kind of do the obvious thing where you say,
+
+let's point at each of these two numbers, and then let's just put the smaller one in the pile.
+
+Right. So now this two is done. So we can ignore that one. Okay. Now we can penetrate the six so that one goes in.
+
+Okay then we've done this one. Now we compared nine in the sex and the 60 smallest that goes in.
+
+Okay then we done with the six. Now we compare the eight and the nine. So that one goes in one of the eight.
+
+And now we've got the nine in the 12. The nine goes in and the 11 in the 12.
+
+The 11 goes in. And then we do the 12. Okay.
+
+So now this whole process of merging. And these two sorted arrays into a bigger sorted array.
+
+This is an 11 by. And that's what we're going to do.
+
+So a sort of recursive solution is going to say solve the sorting problem for each the two sides and then merge them together.
+
+So this is just what this says on the board. So we're going to have to do this merging thing.
+
+And I'm gonna give you the pseudocode in a second. Okay. What is the base cases?
+
+What is the base case for a sorting algorithm? What's the easiest out array to sort?
+
+Yeah. I think anyone or any quisiera.
+
+This is true. When you leave. You are welcome to grab one of these.
+
+Uh, yeah. So here we probably want to take both, because if we get some unevenness here, we might end up with something blank zero length one.
+
+Either way, sorting it is trivial, right? Then we can always do any sort of at this point.
+
+And we can see this as an iterative algorithm to be had. We started off by saying if your length less than equal to one, just give back the array.
+
+Okay, so now we can do merge sort. This is the procedure.
+
+So just like always you turn the recursive algorithm straight into your iterative.
+
+So you turn your idea your subproblems your base case straight into a recursive algorithm okay.
+
+So the first thing is your base case okay. Which is exactly what the base case here okay.
+
+And now we do a uh recursive algorithm. What does it say. It says merge.
+
+So the left hand side merge so the right hand side.
+
+And then we have to still got this bit to do what we have to say what it means to merge them together.
+
+Which is this process here okay. So, uh, need to tell you what merge means.
+
+Okay, so we're calling another procedure here. Um, and you can just inline it so you put the whole thing there, but it comes to be auditory.
+
+So we're going to tell you how to merge separately. Okay. So um this is the idea again.
+
+And I just showed you on the board. So we keep we work left to right. We keep separate pointers into each array.
+
+Okay. And then we just put them in one by one. Okay. And if we pick a number from that array we just move the pointer up.
+
+Okay. So you've got two pointers. Every time we use that number we just move the pointer up.
+
+Okay, so, um, this is how merging looks and action is.
+
+Again, an SEO is beautiful animations. So there's our left point on our right pointer.
+
+You can pair two and three. You put two in and then we move the pointer up one.
+
+This time we put three three. And we move this pointer up on that seven and six.
+
+And we put a six in and move the right point up on and so on.
+
+And we just keep going for. All the way to the end. Okay.
+
+And now all right is indeed sorted. Um, so, uh, the writing this out in our, uh, uh, in our language.
+
+It's exactly the same as what I did before. So we got an AI which goes between zero and, uh, the end of both arrays.
+
+Okay. What we do is have a right pointer and a left pointer, and we just keep going, uh, so long as the, uh, right pointer.
+
+So the thing we need to be kind of aware of here is if we run out of numbers on one side,
+
+we just put all the other ones in on the other side, which makes the algorithm a little bit harder to write.
+
+Okay. So for example, if this was two three okay, that would just go in.
+
+And if I didn't have any more numbers here, I would just put in all of the guys on my other side.
+
+And that's what we have to do. So um, if I've run out of numbers on the right, right, um,
+
+or my left point is still has some numbers and the left one is smaller than the right one, then what I want to do is, uh, take from the left.
+
+Okay. So if I've run out numbers on the right or, uh, the value on the left is smaller than the one on the right,
+
+then I want to take that guy and increment the left pointer.
+
+On the other hand, what could happen is I could have some numbers still on the right to go.
+
+Um, or I might have to. The one on the right is, uh, smaller than the one on the left, and that's the else.
+
+Okay. And then we just take the right hand one, and then we keep doing this until we reach the end, and then we return.
+
+Okay. And this length of this, this I goes from and up zero to n plus m minus one.
+
+Because this new array that I'm building is the length of this one plus the length of this one.
+
+Okay. So then what I'm doing is I'm just working through assigning this thing in the right position,
+
+following the, um, keeping this kind of thing again, saying how it works.
+
+So now merge sort runs like this, right? Any questions about medicine?
+
+All right. So there's also a Python tutor link to it here.
+
+You can see it run. But again thanks to Alessio we have this beautiful picture.
+
+So this is the thing we want to sort. All right. And what happens is we split into left and right.
+
+Okay. And we're going to sort the left one. So we call merge sort on the left guy.
+
+Okay. Now what does that mean. These guys are linked.
+
+So what we have to do is split this guy in two and then call merge, sort on each of these guys again.
+
+So they're going to call merge sort on this left one. Okay.
+
+So now we have something like two. So we call merge sort on this guy link two which means you do sorting each side separately.
+
+But each of these is length one okay. So we get to this one. This is like 12 that's already sorted.
+
+There's like three that's already sorted. And now we need to merge step. And what happens the merge that puts this together.
+
+Okay. So now we've finished sorting this bit here right.
+
+So the next thing I need to sort now is this 79. So what do we do.
+
+We do exactly the same process we call merge. Sort on this guy here okay.
+
+This right left left right thing is just help you track. Uh, what's going on?
+
+They're not just names, okay? Um, so what I do now, I've got my seven of my nine I call merge sort on each side separately.
+
+Cycle, merge on the left. That's what he circle sorted much on the right.
+
+That's what he sorted. These are both base cases. Then I merge them together. And now I've solved merge sort for this bit and for this bit.
+
+Okay. So I need to do is merge them together. Okay.
+
+So how do I do that. I do my merge step which does this.
+
+Now I've done is done all of this, but I've done I've calculated merge sort of my left part of my array.
+
+So I still need to merge on my right. Part of my right and I do exactly the same process.
+
+So here's my right part the. I first look at the first two elements. So those are exactly the same as we did before.
+
+Then I left my second two elements. So those are exactly the same as I did before.
+
+And now I need to merge these two together. And I get this guy right here.
+
+And so now I've worked our merge show on my left. Part of my Ray is much of my right part of my array.
+
+And so all is left is to merge these two together and in one more merge step, which then gives me my sorted array.
+
+Okay, you can imagine how long it took last year to make this, which is why I didn't try and do it.
+
+Okay. So the other thing to see what was going on here is remember when we did addition and uh,
+
+finding the maximum array, the call graph was just a straight line.
+
+Okay. Here the call graph is much more interesting because we can see we're getting a tree.
+
+Okay. So the shape of a call graph is what next term you will call a complete binary tree.
+
+Because we're doing this each guy is making two calls like this.
+
+Okay. We're getting a picture of looks like this. Um, so this is a much more interesting structure.
+
+And then to turning this into an iterative algorithm,
+
+we have to think quite carefully about how to work through the base cases so that we're going up the tree in an order that sensible.
+
+And again that's about coming up with a topological sort. Okay, so as always, Donald Knuth reminds you to ask about the complexity of your algorithm.
+
+Okay. Um, and so merging okay has this shape, right.
+
+And um, so what complexity class do we know?
+
+It's in just from the shape of it. Then you are in what?
+
+And then you. What can I offer you? Uh, I would think you take a 12 egg thing.
+
+Whisper. Crunchy bit dairy milk. Is that the egg thing?
+
+Thank you Deca. That's good. It's nice and dense. All right mind your heads.
+
+That's not too bad. All right. Yeah. So this one's gonna be linear. You have to pay attention to linear.
+
+Because we're using both. And then here. Right. It's linear in this n plus m guy.
+
+Okay. So the number of comparisons this does is theta n plus m.
+
+Okay. Um, next thing in merge sort. Always splitting the array equally.
+
+Okay, so when A is like n merging left and right cos theta n,
+
+because the size of left and the size of right is roughly the same size as, uh, half of n.
+
+In fact, in general you could be plus or minus one if your array is length is odd.
+
+Um, but you can see the introduction to algorithms textbook,
+
+and they have this long argument that it doesn't make any difference until there's not a complexity.
+
+If this worries you. Um, okay.
+
+So now what we've got here is that, um, every time we're calling merge inside our merge sort, we're doing theta n of work.
+
+Okay. So this behaves theta n. Okay.
+
+So, um, like in binary search number recursive calls we're doing is approximately log n because we're always halving it.
+
+Okay. Um, so in total the amount of work we're doing is number of recursive calls, which is uh, log n and theta n of work per recursive call.
+
+So we're doing theta n log n in our total algorithm. Okay.
+
+Um, next time you will briefly look at the master theorem, which lets you prove this more precisely.
+
+And then, um, in program analysis, we do the master theorem in a bit more detail.
+
+And again we prove this more precisely. Okay.
+
+So the complexity of this algorithm is n log n okay.
+
+What are the complexities of the other algorithms that we've seen. The sorting algorithms. That Wednesday.
+
+So someone give me a sorting algorithm and its complexity that is not mergesort, which is n log n.
+
+Yeah. I was so glad.
+
+What would you like? Um. There you go.
+
+You catch any other bets? We got Pablo, so it was n n squared.
+
+Any of those other ones? We do see three sorting algorithms.
+
+So insertion sort. What was insertion sort? You still you get, uh, it's end.
+
+So remember, insertion sort had two loops inside each other, so it was n squared.
+
+Exactly. What can I offer you for my tray of of 12?
+
+12. Good choice. Oh, hang on, I can get that back.
+
+Okay. Yeah. Okay. All right. One more. We've done insertion sort and bubble sort.
+
+There's one more sorting algorithm we've looked at, which is. Session.
+
+So double. So was the third one. Yeah.
+
+So um, so that is true but quick.
+
+So what we haven't looked at. But when we have looked at.
+
+Election. So. Yes, exactly. Those of you who are way back, grab one as you're leaving.
+
+Whoever said selection sort. Yes. Also, I'm not going to try and loving that.
+
+I think with Nelson in the head. Yeah. So if you've answered the question, describe one easily.
+
+Yeah. So in section one selection two and rule n squared.
+
+So this n log n thing really matters right. Because here is an n squared algorithm okay.
+
+Here is an n log n algorithm in red. And this and brown is n okay.
+
+And a log n is much quicker than n a log n is not much slower than n.
+
+Okay. So replacing here what we've gone from is n times n n times log n.
+
+And that is a big speed increase. That's something we're very happy with.
+
+So um, the key idea you take away from this is that merge sort works by recursively sorting a,
+
+uh, an array, uh, so it splits the array, sort to each side and then merge them together.
+
+Um, it doesn't get a sorted array. It splits an array into sorted arrays.
+
+Okay. Um, and because it's halving the work in each recursive call.
+
+Okay. And what it's doing is it's making the amount of work s to smaller each time,
+
+which is why it ends up in n log n complexity, which is why it's faster than insertion sort of selection.
+
+So it's it's the same asymptotic complexity. Um. Quicksort.
+
+And in fact, um, there is no way to write a comparison based sorting algorithm that beats and Logan.
+
+Any comparison based sorting algorithm is in omega n log n, and roughly speaking,
+
+the reason is because you look at because when we're comparing, we can only do say, is this bigger than this?
+
+Okay, I can only sort of make two choices at once.
+
+I can say, okay, it's bigger or smaller, I can be branch on that. And then you look at the kind of space of things you can consider,
+
+and you see that you have to at least look at and log n many things to, uh, uh, to have sorted the whole array.
+
+Okay. So this is why, uh, there is no comparison based sorting algorithm because and again,
+
+although there are other sorting algorithms which don't use comparisons and use other kinds of thing which do be n log n by counting sort.
+
+Okay. So um, some terminology now we have some interesting example.
+
+So as a reminder, the Constantine algorithms, there's not very many interesting Constantine algorithms.
+
+You've seen a Constantine algorithm for some in the first ten numbers. Um, but in general.
+
+Uh, you know, it's, you know, it's sort of work you can do without actually, um.
+
+If any of your input is very, not very interesting. Okay. So now we've seen a logarithmic algorithm which is binary search.
+
+We've seen n log n which is uh merge sort.
+
+Um I think these are sometimes called poly logarithmic or something like that, but it's not a name that I see that commonly.
+
+So, um, I don't really know a good name for them. Okay, now we've got our polynomial, guys.
+
+These are ones. Enter the k for some k. Okay so you've seen linear search.
+
+This is a linear algorithm selection sort insertion sorting bubble sort row quadratic.
+
+And some like matrix multiplication is a cubic algorithm because um just.
+
+In the definition. You have an idea and you need to sum them all up essentially.
+
+And so you have three nested for loops when you do this. And so you get a cubic algorithm.
+
+Um, if you do program analysis with us, you might see that you can actually get down to end to the log three two, which is about 1.6, I think.
+
+And we see an exponential time algorithm in the form of Fibonacci.
+
+And the reason it was Fibonacci was exponential was because it was duplicating every time.
+
+And uh, so we were doing double the amount of work every time we made a recursive call.
+
+And um, again, in program analysis, we'll see that we can get this down to a linear algorithm with memoization.
+
+So, um. There's lots of like, recursion is typically a thing that people find a bit difficult.
+
+Um, it can be a bit difficult to get a head round, but there's lots of interesting resources online about to get your head around it.
+
+These computer file ones are quite good. Uh, one of them is just Towers of Hanoi, which is a very classic introduction to recursion.
+
+I just don't think is very good one for actually teaching, but it is, uh, a classic one, so it's worth doing if you're interested.
+
+Otherwise, um, the MIT lectures are excellent. Um, and they do have a bit on recursion and on Python.
+
+And so um, also in these slides is, is several examples that we haven't looked at.
+
+Okay. Uh, we go all the way back. It was quicker.
+
+Yeah. So, um, there was an example of finding palindromes.
+
+Um, there is example, uh, like checking the phrase palindrome, which is it reads the same forwards and backwards.
+
+Um, and there's one which is summing the elements in array. Okay.
+
+So, um, if you feel like this stuff on recursion was still like you're not getting a head round it, please check these.
+
+Um, and they hopefully should help you a bit. This is an example of what Gemini thinks a palindrome looks like.
+
+Uh, and it goes abcdefg skips H and then goes to X, and it was meant to be all the letters in the alphabet.
+
+Um, and it has the word worst written down here, so it's not a palindrome.
+
+Um, yes. There's lots more in the slides if you want.
+
+Um, but that pretty much concludes programming concepts apart from the seminar on Friday.
+
+Okay. If you have any questions between now and the exam, please do email me.
+
+The help desks still run this week. But this is the last time they're running.
+
+So if you have any questions or you want to go over any the problem sheets or the homework or the seminar sheets, this week is the week to do it.
+
+Um, otherwise, like, thank you for coming. I'll see you Thursday.
+
+The program analysis. I'll see you next year. If you're leaving, you want to take some chocolate?
+
+Please do, because otherwise I have to eat it. All right, uh, I'll finish there and I'll see you.
+
+Most of you, next year. I'm pregnant. Okay.
+
